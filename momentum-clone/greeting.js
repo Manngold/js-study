@@ -5,24 +5,15 @@ const form = document.querySelector(".js-form"),
 const USER_LS = "currentUser",
     SHOWING_CN = "showing";
 
-const saveName = text => {
-    localStorage.setItem(USER_LS, text);
+const saveName = userName => {
+    localStorage.setItem(USER_LS, userName);
 };
 
 const handleSubmit = event => {
     event.preventDefault();
     const currentValue = input.value;
-    paintGretting(timeText(), currentValue);
+    paintGreeting(timeText(), currentValue);
     saveName(currentValue);
-};
-
-const loadname = () => {
-    const currentUser = localStorage.getItem(USER_LS);
-    if (currentUser === null) {
-        askForName();
-    } else {
-        paintGretting(timeText(), currentUser);
-    }
 };
 
 const askForName = () => {
@@ -30,10 +21,19 @@ const askForName = () => {
     form.addEventListener("submit", handleSubmit);
 };
 
-const paintGretting = (timeText, user) => {
+const loadName = () => {
+    const currentUser = localStorage.getItem(USER_LS);
+    if (currentUser === null) {
+        askForName();
+    } else {
+        paintGreeting(timeText(), currentUser);
+    }
+};
+
+const paintGreeting = (helloText, name) => {
     form.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
-    greeting.innerHTML = `${timeText}, ${user}`;
+    greeting.innerHTML = `${helloText}, ${name}`;
 };
 
 const timeText = () => {
@@ -42,7 +42,7 @@ const timeText = () => {
     let text = "";
     if (Hour > 6 && Hour < 12) {
         text = "Good Morning";
-    } else if (Hour > 12 && Hour < 18) {
+    } else if (Hour >= 12 && Hour < 18) {
         text = "Good Afternoon";
     } else {
         text = "Good Night";
@@ -51,7 +51,7 @@ const timeText = () => {
 };
 
 const greetingInit = () => {
-    loadname();
+    loadName();
     timeText();
     setInterval(timeText, 1000);
 };
