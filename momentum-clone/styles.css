@@ -12,12 +12,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 80px;
+}
+
+h4 {
+    font-size: 50px;
+}
+
+input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid white 2px;
 }
 
 button {
     background: none;
     border: none;
     outline: none;
+}
+
+li {
+    list-style: none;
 }
 
 .clicked {
