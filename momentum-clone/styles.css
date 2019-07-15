@@ -27,6 +27,18 @@ input {
     background-color: transparent;
     border: 0;
     border-bottom: solid white 2px;
+    width: 300px;
+    height: 30px;
+}
+
+input::placeholder {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+input:focus {
+    outline: none;
 }
 
 button {
