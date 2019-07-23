@@ -1,5 +1,12 @@
 extends layouts/main.pug
 
 block content
-    .searh__header
+    .search__header
         h1 Searching by #{searchingBy}
+    .search__videos
+        each video in videos
+        +videoBlock({
+            title: video.title,
+            views: video.views,
+            videoFile: video.videoFile
+        })

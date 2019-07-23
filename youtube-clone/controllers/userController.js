@@ -17,12 +17,16 @@ export const postJoin = (req, res) => {
     }
 };
 
-export const login = (req, res) => {
+export const getLogin = (req, res) => {
     res.render("login", { pageTitle: "Login" });
 };
 
+export const postLogin = (req, res) => {
+    res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
-    res.render("logout", { pageTitle: "Log Out" });
+    res.redirect(routes.home);
 };
 
 export const users = (req, res) => {
