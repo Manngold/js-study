@@ -1,6 +1,6 @@
-const weather = document.querySelector(".js-weather");
-const COORDS = "coords";
-const API_KEY = "dd4921796c965b0ccbba3efc67e8b7f7";
+const weather = document.querySelector(".js-weather"),
+    COORDS = "coords",
+    API_KEY = "dd4921796c965b0ccbba3efc67e8b7f7";
 
 const getWeather = (lat, lng) => {
     fetch(
@@ -8,11 +8,10 @@ const getWeather = (lat, lng) => {
     )
         .then(response => response.json())
         .then(json => {
-            const temperature = Math.floor(json.main.temp),
-                description = json.weather[0].description,
-                place = json.name;
-
-            weather.innerText = `${place} temperature is ${temperature} and ${description}`;
+            const temperature = Math.floor(json.main.temp);
+            const description = json.weather[0].description;
+            const place = json.name;
+            weather.innerHTML = `${place}'s temperature is ${temperature}, ${description}`;
         });
 };
 
@@ -23,10 +22,12 @@ const saveCoords = coords => {
 const handleGeoSuccess = position => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+
     const coordsObj = {
         latitude,
         longitude
     };
+
     saveCoords(coordsObj);
     getWeather(latitude, longitude);
 };
