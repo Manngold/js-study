@@ -1,20 +1,20 @@
 const clock = document.querySelector(".js-clock"),
     clockTitle = clock.querySelector("h1");
 
-const getTime = () => {
+const showingClock = () => {
     const date = new Date(),
         Hour = date.getHours(),
         Minute = date.getMinutes(),
-        Seconds = date.getSeconds();
+        Second = date.getSeconds();
 
     clockTitle.innerHTML = `${Hour < 10 ? `0${Hour}` : Hour} : ${
         Minute < 10 ? `0${Minute}` : Minute
-    } : ${Seconds < 10 ? `0${Seconds}` : Seconds}`;
+    } : ${Second < 10 ? `0${Second}` : Second}`;
 };
 
 const clockInit = () => {
-    getTime();
-    setInterval(getTime, 1000);
+    showingClock();
+    setInterval(showingClock, 1000);
 };
 
 clockInit();
